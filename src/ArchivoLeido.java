@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class ArchivoLeido {
 
-    private File archivo =  new File("/home/lordfisto/Downloads/Notes_2DAM2DAW_M05UF3_2018_19.xls");
-    private File archivoEscrito = new File("/home/lordfisto/Documents/M06UF3_NotesExamenFinal.xls");
+    private File archivo =  new File("Notes_2DAM2DAW_M05UF3_2018_19.xls");
+    private File archivoEscrito = new File("M06UF3_NotesExamenFinal.xls");
     private ArrayList<Alumne> alumnes = new ArrayList<Alumne>();
 
 
@@ -34,6 +34,8 @@ public class ArchivoLeido {
                 nom =  sheet1.getCell(0, x);
                 nota =  sheet1.getCell(3, x);
 
+                String notaNum = nota.getContents().replace(',','.');
+
                 if(nota.getContents().equals("")){
 
                 }else if (nom.getContents().equals("")){
@@ -42,7 +44,7 @@ public class ArchivoLeido {
 
                 }  else{
 
-                    alumne = new Alumne(Float.parseFloat(nota.getContents()),nom.getContents());
+                    alumne = new Alumne(Float.parseFloat(notaNum),nom.getContents());
                     alumnes.add(alumne);
 
 
